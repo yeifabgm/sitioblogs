@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block titulo %}Mis Blogs {% endblock %}
+{% block subtitulo %}listado de los Blogs que puedo administrar{% endblock %}
+{% block contenido %}
+	{% for blog in blogs %}
+
+		<h1>{{ blog.nombre }}</h1>
+
+	
+
+		<h1></h1>
+	
+
+	    <section class="content">
+
+        <!-- row -->
+        <div class="row">                        
+            <div class="col-md-12">
+                <!-- The time line -->
+                <ul class="timeline">
+                    <!-- timeline time label -->
+                    {% for post in posts %}
+                    <li class="time-label">
+                        <span class="bg-red">
+                        	{{ post.fecha_crea|date:' b d, Y' }}
+                        </span>
+                    </li>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <li>
+                        <i class="fa fa-check-square-o bg-blue"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                            <h3 class="timeline-header"><a href="#">{{ post.titulo }}</a> {{ blog.nombre }}</h3>
+                            <div class="timeline-body">
+                                {{ post.descripcion }}...
+                            </div>
+                            <div class='timeline-footer right'>
+                                <a class="btn btn-primary btn-xs">Leer más...</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    {% endfor %}
+                    <!-- END timeline item -->
+                    <li>
+                        <i class="fa fa-clock-o"></i>
+                    </li>
+                </ul>
+            </div><!-- /.col -->
+
+        </div><!-- /.row -->
+
+
+    </section><!-- /.content -->
+    {% endfor %}
+
+{% endblock %}

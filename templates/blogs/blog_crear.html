@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block titulo %}Crear Blog {% endblock %}
+{% block subtitulo %}Crea tu blog rápidamente y comienza a hacer tus publicaciones {% endblock %}
+{% block contenido %}
+	<div class="row" style="margin-top: 10px;">
+		<div class="col-md-12">
+			<div class="box box-primary">
+				<div class="box-body chart-responsive">
+					<form action="" method="post">{% csrf_token %}
+						<div {% if form.nombre.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+							<label class="control-label" for="id_nombre">
+								{% if form.nombre.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+								Nombre
+							</label>
+							<input id="id_nombre" maxlength="100" name="nombre" type="text" class="form-control" placeholder="Ingresar nombre del blog"/>
+						</div>
+						<div {% if form.descripcion.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+							<label class="control-label" for="id_descripcion">
+								{% if form.descripcion.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+								Descripcion
+							</label>
+							<textarea id="id_descripcion" name="descripcion" rows="10" class="form-control" ></textarea>
+						</div>
+						<div {% if form.categoria.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+							<label class="control-label" for="id_categoria">
+								{% if form.categoria.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+								Categoria
+							</label>
+							{{ form.categoria }}
+						</div>
+						<div class="pull-right">
+							<input type="submit" class="btn btn-primary" value="Crear" />
+					    </div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block titulo %}Mis Blogs {% endblock %}
+{% block subtitulo %}listado de los Blogs que puedo administrar{% endblock %}
+{% block contenido %}
+	<div class="row">
+	{% for blog in blogs %}
+		<div class="col-md-4">
+			<div class="box box-primary">
+				<div class="box-header">
+					<h3 class="box-title">{{ blog.blog.nombre }}</h3>
+				</div>
+				<div class="box-body chart-responsive">
+					<div class="chart" id="revenue-chart">
+						<p>{{ blog.blog.descripcion }}</p>
+					</div>
+	                <div class='timeline-footer pull-right'>
+	                    <a class="btn btn-danger btn-xs">Crear post</a>	
+	                    <a href="{% url 'blog_detalle' blog.blog.id %}" class="btn btn-primary btn-xs">Leer más...</a>
+	                </div>					
+				</div>
+
+			</div>
+		</div>
+
+	{% endfor %}
+    </div>
+
+{% endblock %}

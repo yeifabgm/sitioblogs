@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block titulo %}Registro {% endblock %}
+{% block subtitulo %}Regístrate para beneficiarte de todas nuestras herramientas en administración de Blogs{% endblock %}
+{% block contenido %}
+	{% if user.is_authenticated %}
+		<p>Bienvenido {{user.first_name}}</p>
+	{% else %}
+		<div class="row" style="margin-top: 10px;">
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-body chart-responsive">
+						<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+							<div {% if form.username.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+								<label class="control-label" for="id_username">
+									{% if form.username.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+									Nombre de usuario
+								</label>
+								<input id="id_username" maxlength="30" name="username" type="text" class="form-control" placeholder="Ingresar nombre de usuario"/>
+							</div>
+							<div {% if form.email.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+								<label class="control-label" for="id_email">
+									{% if form.email.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+									E-mail</label>
+								<input id="id_email" name="email" type="email" class="form-control" placeholder="Ingresar E-mail"/>
+							</div>
+							<div {% if form.first_name.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+								<label class="control-label" for="first_name">
+									{% if form.first_name.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+									Nombre </label>
+								<input id="id_first_name" name="first_name" type="text" class="form-control" placeholder="Ingresar nombre"/>
+							</div>
+							<div {% if form.last_name.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+								<label class="control-label" for="last_name">
+									{% if form.last_name.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+									Apellido</label>
+								<input id="id_last_name" name="last_name" type="text" class="form-control" placeholder="Ingresar apellido"/>
+							</div>
+							<div {% if form.password1.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+								<label class="control-label" for="id_password1">
+									{% if form.password1.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+									Contraseña</label>
+								<input id="id_password1" name="password1" type="password" class="form-control" placeholder="Ingresar contraseña"/>
+							</div>
+							<div {% if form.password2.errors %}class="form-group has-error"{% else %}class="form-group"{% endif %} >
+								<label class="control-label" for="id_password2">
+									{% if form.password2.errors %}<i class="fa fa-times-circle-o"></i>{% endif %}
+									Repetir contraseña</label>
+								<input id="id_password2" name="password2" type="password" class="form-control" placeholder="Ingresar contraseña"/>
+							</div>
+							<div class="pull-right">
+								<input type="submit" class="btn btn-primary" value="Regístrate" />
+						    </div>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}
+
+
+
+
