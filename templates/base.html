@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+{% load staticfiles %}<html>
     <head>
         <meta charset="UTF-8">
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
         <title>AdminLTE | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
@@ -143,7 +144,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../forms/general.html"><i class="fa fa-angle-double-right"></i> Crear</a></li>
+                                <li><a href="{% url 'blog_usuario' %}"><i class="fa fa-angle-double-right"></i> Crear</a></li>
                                 <li><a href="../forms/advanced.html"><i class="fa fa-angle-double-right"></i> Consultar</a></li>                             
                             </ul>
                         </li>

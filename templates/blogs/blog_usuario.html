@@ -14,8 +14,11 @@
 						<p>{{ blog.blog.descripcion }}</p>
 					</div>
 	                <div class='timeline-footer pull-right'>
-	                    <a class="btn btn-danger btn-xs">Crear post</a>	
-	                    <a href="{% url 'blog_detalle' blog.blog.id %}" class="btn btn-primary btn-xs">Leer más...</a>
+	                	<form action="{% url 'post_crear' %}" method="post">{% csrf_token %}
+	                		<input type="hidden" name="id_blog" value="{{ blog.blog.id }}"/>
+	                		<input type="submit" class="btn btn-danger btn-xs" value="Crear post"/>
+	                    </form>
+	                    <a href="{% url 'blog_detalle' blog.blog.id %}" class="btn btn-primary btn-xs">Visitar</a>
 	                </div>					
 				</div>
 
