@@ -12,6 +12,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.utils import timezone
 from django.views.generic import TemplateView, ListView
+from django.db.models import Count
 
 def index(request):
 	return HttpResponse("¡¡Estamos creando nuestra primera view!!")
@@ -38,9 +39,16 @@ def blogCrear(request):
 	return render_to_response('blogs/blog_crear.html', {'form': form}, context_instance=RequestContext(request))
 
 def blog(request, id_blog):
-	blogs = Blog.objects.filter(pk=id_blog)
-	posts = Post.objects.filter(adminblog__blog__id=id_blog)
-	return render_to_response('blogs/blogs.html', {'posts': posts, 'blogs': blogs}, context_instance=RequestContext(request))
+	blogs = Blog.objects.get(pk=id_blog)
+	posts = Post.objects.filter(adminblog__blog__id=id_blog).order_by('-fecha_crea')
+
+	postsRecientes = Post.objects.filter(adminblog__blog__id=id_blog).order_by('-fecha_crea')[0:6]
+
+################
+	print Adminblog.objects.values('blog').annotate(dcount=Count('blog'), ).order_by('-dcount')[0:2]
+################
+
+	return render_to_response('blogs/blogs.html', {'posts': posts, 'blogs': blogs, 'postsRecientes': postsRecientes}, context_instance=RequestContext(request))
 
 @login_required
 def blogsUsuario(request):

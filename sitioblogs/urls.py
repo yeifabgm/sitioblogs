@@ -29,8 +29,11 @@ urlpatterns = patterns('',
 
     # Posts
     url(r'^posts/crear/$', 'posts.views.crearPost', name="post_crear"),
+    url(r'^posts/(?P<id_post>\d+)/$', 'posts.views.verPost', name="post_ver"),
 
-
+    # Comentarios
+    
+    
 )
 
 urlpatterns += staticfiles_urlpatterns()
