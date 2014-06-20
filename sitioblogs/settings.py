@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'ckeditor',
     'registration',
     'django_gravatar',
+    
 )
 
 MIDDLEWARE_CLASSES = (
