@@ -18,7 +18,7 @@
                 <li>
                     <i class="fa fa-check-square-o bg-blue"></i>
                     <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                        <span class="time"> {{ post.adminblog.user }}</span>
                         <h3 class="timeline-header"><a href="{% url 'post_ver' post.id %}">{{ post.titulo }}</a> - {{ blogs.nombre }}</h3>
                         <div class="timeline-body">
                             {{ post.descripcion }}...

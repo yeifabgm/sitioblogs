@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-{% load staticfiles %}<html>
+{% load staticfiles %}
+{% load gravatar %}
+<html>
     <head>
         <meta charset="UTF-8">
         <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
-        <title>AdminLTE | Dashboard</title>
+        <title>SitioBlogs</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -57,7 +59,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="/static/bootstrap/img/avatar3.png" class="img-circle" alt="User Image" />
+                                    <img src="{% gravatar_url user.email 90 %}" class="img-circle" alt="User Image" />
                                     <p>
                                         {{user.first_name}} - {{user.username}}
                                         <small>Miembro desde {{ user.date_joined|date:' b d, Y' }}</small>
@@ -107,7 +109,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="/static/bootstrap/img/avatar3.png" class="img-circle" alt="User Image" />
+                            <img src="{% gravatar_url user.email 45 %}" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Hola, {{user.username}}</p>
